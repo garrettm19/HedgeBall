@@ -9,6 +9,7 @@ public class BallBehavior : MonoBehaviour
     private Transform currMaze;
 
     [SerializeField] private float linearForce = 5f;
+    [SerializeField] private float localGravity = 5f;
     [SerializeField] private LayerMask groundLayerMask;
 
     // Start is called before the first frame update
@@ -27,5 +28,6 @@ public class BallBehavior : MonoBehaviour
             Vector3 direction = Vector3.ProjectOnPlane(currMaze.up, Vector3.up).normalized;
             rb.AddForce(linearForce * direction, ForceMode.Acceleration);
         }
+        transform.position += localGravity * Time.deltaTime * -currMaze.up;
     }
 }

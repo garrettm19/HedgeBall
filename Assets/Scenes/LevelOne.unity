@@ -3910,6 +3910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linearForce: 5
+  localGravity: 5
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
