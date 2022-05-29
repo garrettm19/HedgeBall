@@ -4,32 +4,28 @@ using UnityEngine;
 
 public class BallBehavior : MonoBehaviour
 {
-    private SphereCollider col;
+    //private SphereCollider col;
     private Rigidbody rb;
+    private Transform currMaze;
 
-    [SerializeField] private float raycastOffset = .01f;
-    [SerializeField] private float gravity = 200f;
+    [SerializeField] private float linearForce = 5f;
     [SerializeField] private LayerMask groundLayerMask;
+
     // Start is called before the first frame update
     void Start()
     {
-        col = GetComponent<SphereCollider>();
         rb = GetComponent<Rigidbody>();
+        currMaze = GameObject.FindGameObjectWithTag("Maze").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsGrounded().collider == null) rb.velocity += gravity * Time.deltaTime * Vector3.down;
-        else transform.position = Vector3.up * (IsGrounded().point.y - col.radius);
+        //Add Linear Force
+        if (Vector3.Angle(Vector3.up, currMaze.up) > 1f)
+        {
+            Vector3 direction = Vector3.ProjectOnPlane(currMaze.up, Vector3.up).normalized;
+            rb.AddForce(linearForce * direction, ForceMode.Acceleration);
+        }
     }
-
-    private RaycastHit IsGrounded() 
-    {
-        bool hit = Physics.SphereCast(col.center, col.radius, Vector3.down, out RaycastHit hitInfo, col.radius + raycastOffset, groundLayerMask);
-        Color rayColor = hit ? Color.green : Color.red;
-        Debug.DrawRay(col.center, Vector3.up * 15f, rayColor);
-        return hitInfo;
-    }
-
 }
