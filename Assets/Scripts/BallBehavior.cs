@@ -12,6 +12,7 @@ public class BallBehavior : MonoBehaviour
     [SerializeField] private float linearForce = 5f;
     [SerializeField] private float raycastOffset = 0.5f;
     [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private HUDController hudController;
 
     // Start is called before the first frame update
     void Start()
@@ -40,5 +41,13 @@ public class BallBehavior : MonoBehaviour
     private bool IsGrounded() 
     {
         return Physics.Raycast(rb.position, -currMaze.up, out _, sCol.radius + raycastOffset, groundLayerMask);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("End"))
+        {
+            hudController.setWinBanner();
+        }
     }
 }
