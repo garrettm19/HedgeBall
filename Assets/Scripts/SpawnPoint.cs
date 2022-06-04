@@ -28,6 +28,6 @@ public class SpawnPoint : MonoBehaviour
         {
             Destroy(currentBall);
         }
-       currentBall = Instantiate(ball, transform.position, Quaternion.identity);
+       currentBall = Instantiate(ball, transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Maze").transform);
     }
 }

@@ -6,6 +6,7 @@ public class BallBehavior : MonoBehaviour
 {
     //private SphereCollider col;
     private Rigidbody rb;
+    public Rigidbody getRb { get { return rb; } }
     private SphereCollider sCol;
     private Transform currMaze;
 
@@ -45,9 +46,9 @@ public class BallBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("End"))
-        {
-            hudController.setWinBanner();
-        }
+        //if (other.CompareTag("End"))
+        //{
+        //    hudController.setWinBanner();
+        //}
     }
 }
