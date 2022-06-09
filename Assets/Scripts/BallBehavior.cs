@@ -9,11 +9,14 @@ public class BallBehavior : MonoBehaviour
     public Rigidbody getRb { get { return rb; } }
     private SphereCollider sCol;
     private Transform currMaze;
+    private GameObject camera;
 
     [SerializeField] private float linearForce = 5f;
     [SerializeField] private float raycastOffset = 0.5f;
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private HUDController hudController;
+
+    [SerializeField] private Vector3 cameraOffset = new Vector3(0, -6, 16);
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +24,13 @@ public class BallBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         sCol = GetComponent<SphereCollider>();
         currMaze = GameObject.FindGameObjectWithTag("Maze").GetComponent<Transform>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
     void Update()
     {
+        camera.transform.position = transform.position - cameraOffset;
         //Add Linear Force
         if (Vector3.Angle(Vector3.up, currMaze.up) > 1f)
         {

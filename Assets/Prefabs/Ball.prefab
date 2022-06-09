@@ -133,3 +133,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   hudController: {fileID: 0}
+  cameraOffset: {x: 0, y: -24, z: 32}
