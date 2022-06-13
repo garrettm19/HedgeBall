@@ -11,12 +11,14 @@ public sealed class GameManager:MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void InitializeMaze()
+    public void InitializeScene()
     {
+        GameEnv.Instance.HUDCanvas = Instantiate(ResourceLoader.HUDCanvas, transform);
         GameEnv.Instance.lights = Instantiate(ResourceLoader.lights, transform);
+        GameEnv.Instance.clouds = Instantiate(ResourceLoader.clouds, transform);
         GameEnv.Instance.maze = Instantiate(ResourceLoader.maze, Vector3.zero, Quaternion.identity, transform);
     }
-
+    
     public void ResetMaze()
     {
         GameEnv.Instance.maze.GetComponent<MazeRenderer>().ResetMaze();

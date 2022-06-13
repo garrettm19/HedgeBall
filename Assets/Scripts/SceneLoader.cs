@@ -11,7 +11,7 @@ public class SceneLoader: MonoBehaviour
     public void LoadLevel()
     {
         SceneManager.LoadScene(1);
-        GameManager.manager.InitializeMaze();
+        GameManager.manager.InitializeScene();
     }
 
     public void LoadGameOverMenu() 

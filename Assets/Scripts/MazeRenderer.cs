@@ -50,8 +50,13 @@ public class MazeRenderer : MonoBehaviour
     {
         Transform wall = Instantiate(wallPrefab, transform);
         wall.position = position + offset;
-        wall.localScale = new Vector3(cellSize, wall.localScale.y, wall.localScale.z);
+        
+        var localScale = wall.localScale;
+        localScale = new Vector3(cellSize, localScale.y, localScale.z);
+        wall.localScale = localScale;
+        
         wall.eulerAngles = rotation;
+        
         walls.Add(wall);
     }
 
@@ -80,18 +85,26 @@ public class MazeRenderer : MonoBehaviour
                         var offset = new Vector3(cellSize/2,0,0);
                         CreateWall(position, offset, Vector3.up * 90);
                     }
-                }
-                if(j == 0)
-                {
-                    if(cell.HasFlag(WallStatus.DOWN))
+
+                    if (j == rows - 1)
                     {
-                        var offset = new Vector3(0,0,-cellSize/2);
+                        GameEnv.Instance.endPoint = Instantiate(ResourceLoader.endPoint, GameEnv.Instance.maze.transform);
+                        GameEnv.Instance.endPoint.transform.position = position + new Vector3(0f, -0.1f, 0f);
+                    }
+                }
+
+                if (j == 0)
+                {
+                    if (cell.HasFlag(WallStatus.DOWN))
+                    {
+                        var offset = new Vector3(0, 0, -cellSize / 2);
                         CreateWall(position, offset, Vector3.zero);
                     }
-                    if(i==0) //Set starting point
+
+                    if (i == 0)
                     {
                         GameEnv.Instance.spawnPoint = Instantiate(ResourceLoader.spawnPoint, GameEnv.Instance.maze.transform);
-                        GameEnv.Instance.spawnPoint.transform.position = position + new Vector3(0f,-0.1f,0f);
+                        GameEnv.Instance.spawnPoint.transform.position = position + new Vector3(0f, -0.1f, 0f);
                     }
                 }
             }
