@@ -8,8 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 52ddeba2956b82e499effbbcd85e18e2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelOne.unity
     guid: 20700f364b5554416bce48a014c17508
+  - enabled: 1
+    path: Assets/Scenes/MazeGenerator.unity
+    guid: 749ef30000749a9419b78f0cbad88c4d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 77473be17fc9e304ab3edbe352495f24, type: 2}

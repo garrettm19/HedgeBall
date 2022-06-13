@@ -4,30 +4,12 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField] GameObject ball;
-
-    private GameObject currentBall = null;
-
-    // Start is called before the first frame update
+    [SerializeField] 
+    private Vector3 ballOffset;
+    
     void Start()
     {
-        SpawnBall();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            SpawnBall();
-        }
-    }
-
-    public void SpawnBall()
-    {
-        if (currentBall != null)
-        {
-            Destroy(currentBall);
-        }
-       currentBall = Instantiate(ball, transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Maze").transform);
+        GameEnv.Instance.ball = Instantiate(ResourceLoader.ball, GameEnv.Instance.maze.transform);
+        GameEnv.Instance.ball.transform.position = GameEnv.Instance.spawnPoint.transform.position + ballOffset; 
     }
 }

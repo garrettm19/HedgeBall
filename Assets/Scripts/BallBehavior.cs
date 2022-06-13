@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BallBehavior : MonoBehaviour
@@ -20,7 +18,7 @@ public class BallBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         sCol = GetComponent<SphereCollider>();
-        currMaze = GameObject.FindGameObjectWithTag("Maze").GetComponent<Transform>();
+        currMaze = GameEnv.Instance.maze.transform;
     }
 
     // Update is called once per frame

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,19 +8,15 @@ public class SceneLoader: MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void LoadPreviousLevel()
+    public void LoadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(1);
+        GameManager.manager.InitializeMaze();
     }
 
-    public void LoadNextLevel()
+    public void LoadGameOverMenu() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void GameOverMenu() 
-    {
-        SceneManager.LoadScene(SceneManager.sceneCount - 1);
+        SceneManager.LoadScene(2);
     }
 
     public void QuitGame()
