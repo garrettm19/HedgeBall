@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7104f4cafe015a543af009465c449d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linearForce: 1.5
+  linearForce: 1.75
   raycastOffset: -0.23
   groundLayerMask:
     serializedVersion: 2
