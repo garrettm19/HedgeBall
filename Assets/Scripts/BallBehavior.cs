@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class BallBehavior : MonoBehaviour
 {
@@ -41,17 +40,5 @@ public class BallBehavior : MonoBehaviour
     {
         //Debug.DrawRay(transform.position, -transform.up * (gameObject.GetComponent<SphereCollider>().radius + raycastOffset), Color.red);
         return Physics.Raycast(rb.position, -currMaze.up, out _, sCol.radius + raycastOffset, groundLayerMask);
-    }
-
-    public void ChangeSpeed(float value, float time)
-    {
-        StartCoroutine(ChangeSpeedDuration(value, time));
-    }
-
-    IEnumerator ChangeSpeedDuration(float value, float time)
-    {
-        linearForce += value;
-        yield return new WaitForSeconds(time);
-        linearForce -= value;
     }
 }
