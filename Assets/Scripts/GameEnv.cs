@@ -6,13 +6,15 @@ public sealed class GameEnv
 {
     public static GameEnv instance;
 
+    public GameObject audioManager {get; set;}
     public GameObject HUDCanvas {get; set;}
     public GameObject lights {get; set;}
     public GameObject ball {get; set;}
     public GameObject maze {get; set;}
     public GameObject clouds {get; set;}
     public GameObject spawnPoint {get; set;}
-    public GameObject endPoint {get; set;}
+    public GameObject endPoint { get; set; }
+    public GameObject survey {get; set;}
 
     private List<GameObject> enemies;
 

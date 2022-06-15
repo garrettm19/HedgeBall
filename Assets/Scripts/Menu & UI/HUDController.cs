@@ -8,7 +8,7 @@ public class HUDController : MonoBehaviour
 {
     [SerializeField] private int countdownTime;
     [SerializeField] private int levelTime;
-
+    
     [SerializeField] private TMP_Text countdownText; 
     [SerializeField] private TMP_Text levelTimeText;
     [SerializeField] private TMP_Text winLoseStatusText;
@@ -21,6 +21,7 @@ public class HUDController : MonoBehaviour
     {
         couroutine = CountdownToStart(); 
         StartCoroutine(couroutine);
+        GameEnv.instance.survey = Instantiate(ResourceLoader.survey, GameManager.manager.transform);
     }
 
     IEnumerator CountdownToStart()
@@ -50,6 +51,7 @@ public class HUDController : MonoBehaviour
         winLoseStatusText.gameObject.SetActive(true);
         winLoseStatusText.text = "YOU LOSE!!!";
         GameEnv.Instance.maze.GetComponent<MazeControl>().enabled = false; //Disable Controls
+        ToggleButtons(true);
     }
 
     public void SetWinBanner()
@@ -58,10 +60,16 @@ public class HUDController : MonoBehaviour
         GameEnv.Instance.maze.GetComponent<MazeControl>().enabled = false; //Disable Controls
         winLoseStatusText.gameObject.SetActive(true);
         winLoseStatusText.text = "YOU WIN";
+        ToggleButtons(true);    
     }
 
     public void ToggleButtons(bool state)
     {
         transform.GetChild(0).gameObject.SetActive(state);
+    }
+
+    public void EnableSurvey()
+    {
+        GameEnv.Instance.survey.SetActive(true);
     }
 }

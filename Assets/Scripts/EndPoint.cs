@@ -11,8 +11,7 @@ public class EndPoint : MonoBehaviour
             Debug.Log("You Win");
             SceneManager.LoadScene(0);*/
             GameEnv.Instance.ball.GetComponent<Rigidbody>().isKinematic = true;
-            GameEnv.Instance.HUDCanvas.gameObject.GetComponentInChildren<HUDController>().SetWinBanner();    
-            GameEnv.Instance.HUDCanvas.gameObject.GetComponentInChildren<HUDController>().ToggleButtons(true);    
+            GameEnv.Instance.HUDCanvas.gameObject.GetComponentInChildren<HUDController>().SetWinBanner();
         }
     }
 }

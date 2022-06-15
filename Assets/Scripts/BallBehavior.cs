@@ -30,7 +30,7 @@ public class BallBehavior : MonoBehaviour
             rb.AddForce(linearForce * direction, ForceMode.Acceleration);
         }
 
-        if (IsGrounded())
+        if (IsGrounded() & rb.isKinematic == false)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         }
