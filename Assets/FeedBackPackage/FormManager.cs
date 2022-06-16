@@ -4,13 +4,13 @@ using UnityEngine.Networking;
 
 public class FormManager : MonoBehaviour
 {
-    [SerializeField] Survey survey;
-    [SerializeField] GameObject submitButton;
-    [SerializeField] string feedBack1;
+    [SerializeField] private Survey survey;
+    [SerializeField] private GameObject submitButton;
+    [SerializeField] private string feedBack1;
 
     //Add the string data from google form here
-    readonly string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSetVkjQxniuitRTHb22Z4nNQJEmVkCFskVNvhOssv1Z_g2ouw/formResponse";
-    readonly string entry = "entry.1056770302";
+    private const string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSetVkjQxniuitRTHb22Z4nNQJEmVkCFskVNvhOssv1Z_g2ouw/formResponse";
+    private const string entry = "entry.1056770302";
 
     public void Send()
     {

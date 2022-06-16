@@ -15,8 +15,8 @@ public class Knockback : MonoBehaviour
             dir.Normalize();
             Debug.Log(dir);
             dir.y = 0;
-            other.GetComponent<BallBehavior>().getRb.velocity = Vector3.zero;
-            other.GetComponent<BallBehavior>().getRb.AddForce(knockBackForce * -dir, ForceMode.Acceleration);
+            other.GetComponent<BallBehavior>().rb.velocity = Vector3.zero;
+            other.GetComponent<BallBehavior>().rb.AddForce(knockBackForce * -dir, ForceMode.Acceleration);
         }
     }
 }

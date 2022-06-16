@@ -3,8 +3,7 @@ using UnityEngine;
 public class BallBehavior : MonoBehaviour
 {
     //private SphereCollider col;
-    private Rigidbody rb;
-    public Rigidbody getRb { get { return rb; } }
+    public Rigidbody rb { get; private set; }
     private SphereCollider sCol;
     private Transform currMaze;
 
@@ -12,7 +11,6 @@ public class BallBehavior : MonoBehaviour
     [SerializeField] private float raycastOffset = 0.01f;
     [SerializeField] private LayerMask groundLayerMask;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,7 +18,6 @@ public class BallBehavior : MonoBehaviour
         currMaze = GameEnv.Instance.maze.transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Add Linear Force
@@ -32,7 +29,9 @@ public class BallBehavior : MonoBehaviour
 
         if (IsGrounded() & rb.isKinematic == false)
         {
-            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            Vector3 velocity = rb.velocity;
+            velocity = new Vector3(velocity.x, 0f, velocity.z);
+            rb.velocity = velocity;
         }
     }
 

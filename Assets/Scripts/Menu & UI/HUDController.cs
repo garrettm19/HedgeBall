@@ -15,16 +15,19 @@ public class HUDController : MonoBehaviour
 
     //[SerializeField] private GameObject maze;
 
-    private IEnumerator couroutine;
+    private IEnumerator countdown;
+    private IEnumerator levelTimer;
 
     private void Start()
     {
-        couroutine = CountdownToStart(); 
-        StartCoroutine(couroutine);
+        countdown = Countdown();
+        levelTimer = LevelTimer();
+        StartCoroutine(countdown);
+        
         GameEnv.instance.survey = Instantiate(ResourceLoader.survey, GameManager.manager.transform);
     }
-
-    IEnumerator CountdownToStart()
+    
+    private IEnumerator Countdown()
     {
         while (countdownTime > 0)
         {
@@ -37,6 +40,11 @@ public class HUDController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         countdownText.gameObject.SetActive(false);
 
+        StartCoroutine(levelTimer);   // Call to levelTimer coroutine
+    }
+
+    private IEnumerator LevelTimer()
+    {
         GameEnv.Instance.maze.GetComponent<MazeControl>().enabled = true; //Enable Controls
         levelTimeText.gameObject.SetActive(true);
         
@@ -47,28 +55,19 @@ public class HUDController : MonoBehaviour
             levelTime--;
         }
         levelTimeText.text = "00:00:00";
-        
-        winLoseStatusText.gameObject.SetActive(true);
-        winLoseStatusText.text = "YOU LOSE!!!";
-        GameEnv.Instance.maze.GetComponent<MazeControl>().enabled = false; //Disable Controls
-        ToggleButtons(true);
+        SetWinLoseBanner("YOU LOSE"); // Set the game over banner
     }
 
-    public void SetWinBanner()
+    public void SetWinLoseBanner(string status)
     {
-        StopCoroutine(couroutine);
+        if(status == "YOU WIN")StopCoroutine(levelTimer);
         GameEnv.Instance.maze.GetComponent<MazeControl>().enabled = false; //Disable Controls
+        winLoseStatusText.text = status;
         winLoseStatusText.gameObject.SetActive(true);
-        winLoseStatusText.text = "YOU WIN";
-        ToggleButtons(true);    
+        transform.GetChild(0).gameObject.SetActive(true); //Enable end-game Menu
     }
 
-    public void ToggleButtons(bool state)
-    {
-        transform.GetChild(0).gameObject.SetActive(state);
-    }
-
-    public void EnableSurvey()
+    public void OpenSurveyForm()
     {
         GameEnv.Instance.survey.SetActive(true);
     }

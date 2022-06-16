@@ -10,13 +10,13 @@ public sealed class GameManager:MonoBehaviour
         manager = this;
         DontDestroyOnLoad(this);
 
-        GameEnv.Instance.audioManager = Instantiate(ResourceLoader.audioManager, Vector3.zero, Quaternion.identity, transform);
-        GameEnv.Instance.lights = Instantiate(ResourceLoader.lights, transform);
+        Instantiate(ResourceLoader.audioManager, Vector3.zero, Quaternion.identity, transform);
+        Instantiate(ResourceLoader.lights, transform);
     }
 
     public void InitializeScene()
     {
-        GameEnv.Instance.clouds = Instantiate(ResourceLoader.clouds, transform);
+        Instantiate(ResourceLoader.clouds, transform);
         GameEnv.Instance.maze = Instantiate(ResourceLoader.maze, Vector3.zero, Quaternion.identity, transform);
         GameEnv.Instance.HUDCanvas = Instantiate(ResourceLoader.HUDCanvas, transform);
     }

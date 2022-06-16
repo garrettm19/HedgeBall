@@ -4,30 +4,44 @@ using UnityEngine.InputSystem;
 public class MazeControl : MonoBehaviour
 {
 
-    [SerializeField] float tiltSpeed = 2.0f;
-    [SerializeField] float maxAngle = 10f;
+    [SerializeField] private float tiltSpeed = 2.0f;
+    [SerializeField] private float maxAngle = 10f;
 
-    Vector3 rotateInput; 
-    Transform maze;
+    private Vector3 rotateInput;
+    private Transform maze;
 
-    void Awake()
+    private void Awake()
     {
         maze = GetComponent<Transform>();
     }
 
-    void Update()
+    private void Update()
     {
         TiltMaze();
     }
 
-    void OnRotate(InputValue value) 
+    private void OnRotate(InputValue value) 
     {
         rotateInput = value.Get<Vector3>();
     }
 
     void TiltMaze()
     {
-        var targetRotation = Quaternion.Euler(maxAngle * rotateInput.x * Vector3.back) * Quaternion.Euler(maxAngle * rotateInput.z * Vector3.right);
+        var targetRotation = Quaternion.Euler(maxAngle * rotateInput.x * Vector3.back)
+                                    * Quaternion.Euler(maxAngle * rotateInput.z * Vector3.right);
         maze.rotation = Quaternion.Lerp(maze.rotation, targetRotation, tiltSpeed * Time.deltaTime);
     }
+
+    /*
+    public void RotateLeft()
+    {
+        maxRotation -= 90f;
+        Debug.Log(Quaternion.Euler(maxRotation * Vector3.up));
+    }
+    
+    public void RotateRight()
+    {   
+        maxRotation += 90f;
+        Debug.Log(Quaternion.Euler(maxRotation * Vector3.up));
+    }*/
 }
