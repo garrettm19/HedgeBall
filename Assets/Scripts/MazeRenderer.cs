@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class MazeRenderer : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class MazeRenderer : MonoBehaviour
 
     [SerializeField]
     private Transform wallPrefab = null;
+    [SerializeField]
+    private Transform treePrefab = null;
     [SerializeField]
     private Transform groundPrefab = null;
 
@@ -48,9 +51,20 @@ public class MazeRenderer : MonoBehaviour
 
     private void CreateWall(Vector3 position, Vector3 offset, Vector3 rotation)
     {
-        Transform wall = Instantiate(wallPrefab, transform);
-        wall.position = position + offset;
+        Random rd = new Random();
+        int rand_num = rd.Next(1,50);
         
+        Transform wall;
+        if(rand_num%7 == 0)
+        {
+            wall = Instantiate(treePrefab, transform);
+            wall.position = position + offset - new Vector3(0,0.2f,0);
+        }
+        else
+        {
+            wall = Instantiate(wallPrefab, transform);
+            wall.position = position + offset;
+        }
         var localScale = wall.localScale;
         localScale = new Vector3(cellSize, localScale.y, localScale.z);
         wall.localScale = localScale;

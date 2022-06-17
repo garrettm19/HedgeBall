@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PauseState : GameState
 {
-    bool _activated = false;
+    private bool _activated = false;
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public override void Enter()
     {
         GameEnv.instance.maze.GetComponent<MazeControl>().enabled = false;
@@ -21,6 +22,7 @@ public class PauseState : GameState
     //    }
     //}
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public override void Exit()
     {
         GameEnv.instance.maze.GetComponent<MazeControl>().enabled = true;

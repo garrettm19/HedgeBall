@@ -2,12 +2,13 @@
 
 public abstract class StateMachine : MonoBehaviour
 {
-    public State CurrentState => _currentState;
+    public State CurrentState { get; private set; }
+
     protected bool InTransition { get; private set; }
 
-    State _currentState;
     protected State _previousState;
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void ChangeState<T>() where T : State
     {
         T targetState = GetComponent<T>();
@@ -30,7 +31,7 @@ public abstract class StateMachine : MonoBehaviour
 
     void InitiateStateChange(State targetState)
     {
-        if (_currentState != targetState && !InTransition)
+        if (CurrentState != targetState && !InTransition)
         {
             Transition(targetState);
         }
@@ -39,9 +40,9 @@ public abstract class StateMachine : MonoBehaviour
     void Transition(State newState)
     {
         InTransition = true;
-        _currentState?.Exit();
-        _currentState = newState;
-        _currentState?.Enter();
+        CurrentState?.Exit();
+        CurrentState = newState;
+        CurrentState?.Enter();
         InTransition = false;
     }
 

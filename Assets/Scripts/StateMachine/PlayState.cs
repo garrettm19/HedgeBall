@@ -6,6 +6,7 @@ public class PlayState : GameState
 {
     bool _activated = false;
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public override void Enter()
     {
         Debug.Log("Playing");
@@ -19,6 +20,7 @@ public class PlayState : GameState
     //    }
     //}
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public override void Exit()
     {
         _activated = false;

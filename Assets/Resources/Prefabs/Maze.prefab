@@ -93,5 +93,6 @@ MonoBehaviour:
   cols: 10
   rows: 10
   wallPrefab: {fileID: 7374247081868580332, guid: d863e583afea71242b94c8e48304c9b2, type: 3}
+  treePrefab: {fileID: 1248527965874902697, guid: 6d6f5377f6bbc314a92c19b91372c05e, type: 3}
   groundPrefab: {fileID: 5836523118062344743, guid: d3a0aa4c97054874fba6dcc02dfd4fa2, type: 3}
   cellSize: 1
