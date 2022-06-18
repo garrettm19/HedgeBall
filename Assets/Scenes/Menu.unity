@@ -1584,6 +1584,7 @@ MonoBehaviour:
   _volumeParameter: BGMVol
   _mixer: {fileID: 24100000, guid: c8297642e95c0bd4aaf7ce260875b3c0, type: 2}
   _multiplier: 30
+  defaultVolume: 0.5
   volumeSlider: {fileID: 938327176}
 --- !u!1 &1085941775
 GameObject:
@@ -1692,6 +1693,7 @@ MonoBehaviour:
   _volumeParameter: SFXVol
   _mixer: {fileID: 24100000, guid: c8297642e95c0bd4aaf7ce260875b3c0, type: 2}
   _multiplier: 30
+  defaultVolume: 0.5
   volumeSlider: {fileID: 1085941777}
 --- !u!1 &1137831335
 GameObject:
@@ -2238,6 +2240,7 @@ MonoBehaviour:
   _volumeParameter: MasterVol
   _mixer: {fileID: 24100000, guid: c8297642e95c0bd4aaf7ce260875b3c0, type: 2}
   _multiplier: 30
+  defaultVolume: 0.5
   volumeSlider: {fileID: 1297958712}
 --- !u!1 &1359184216
 GameObject:

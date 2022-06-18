@@ -8,6 +8,7 @@ public class MazeControl : MonoBehaviour
     [SerializeField] private float maxAngle = 10f;
 
     private Vector3 rotateInput;
+    [SerializeField] private float yRotation;
     private Transform maze;
 
     private void Awake()
@@ -28,20 +29,18 @@ public class MazeControl : MonoBehaviour
     void TiltMaze()
     {
         var targetRotation = Quaternion.Euler(maxAngle * rotateInput.x * Vector3.back)
-                                    * Quaternion.Euler(maxAngle * rotateInput.z * Vector3.right);
+                                    * Quaternion.Euler(maxAngle * rotateInput.z * Vector3.right)
+                                    * Quaternion.Euler(yRotation * Vector3.up);
         maze.rotation = Quaternion.Lerp(maze.rotation, targetRotation, tiltSpeed * Time.deltaTime);
     }
 
-    /*
     public void RotateLeft()
     {
-        maxRotation -= 90f;
-        Debug.Log(Quaternion.Euler(maxRotation * Vector3.up));
+        yRotation += 90;
     }
     
     public void RotateRight()
     {   
-        maxRotation += 90f;
-        Debug.Log(Quaternion.Euler(maxRotation * Vector3.up));
-    }*/
+        yRotation -= 90;
+    }
 }

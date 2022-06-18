@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
 {
-    [SerializeField] string _volumeParameter = "MasterVol";
-    [SerializeField] AudioMixer _mixer;
-    [SerializeField] float _multiplier = 30f;
-    [SerializeField] Slider volumeSlider;
+    [SerializeField] private string _volumeParameter = "MasterVol";
+    [SerializeField] private AudioMixer _mixer;
+    [SerializeField] private float _multiplier = 30f;
+    [SerializeField] private float defaultVolume = 0.5f;
+    [SerializeField] private Slider volumeSlider;
 
     void Start()
     {
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
-            PlayerPrefs.SetFloat("musicVolume", 1);
+            PlayerPrefs.SetFloat("musicVolume", defaultVolume);
             Load();
         }
         else

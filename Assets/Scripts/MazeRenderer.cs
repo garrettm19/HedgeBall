@@ -52,7 +52,7 @@ public class MazeRenderer : MonoBehaviour
     private void CreateWall(Vector3 position, Vector3 offset, Vector3 rotation)
     {
         Random rd = new Random();
-        int rand_num = rd.Next(1,50);
+        int rand_num = rd.Next(1,30);
         
         Transform wall;
         if(rand_num%7 == 0)
