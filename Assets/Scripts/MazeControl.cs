@@ -23,7 +23,10 @@ public class MazeControl : MonoBehaviour
 
     private void OnRotate(InputValue value) 
     {
-        rotateInput = value.Get<Vector3>();
+        if (GameManager.manager.GetComponent<GameSM>().CurrentState is PlayState)
+        {
+            rotateInput = value.Get<Vector3>();
+        }
     }
 
     void TiltMaze()
@@ -32,6 +35,7 @@ public class MazeControl : MonoBehaviour
                                     * Quaternion.Euler(maxAngle * rotateInput.z * Vector3.right)
                                     * Quaternion.Euler(yRotation * Vector3.up);
         maze.rotation = Quaternion.Lerp(maze.rotation, targetRotation, tiltSpeed * Time.deltaTime);
+
     }
 
     public void RotateLeft()

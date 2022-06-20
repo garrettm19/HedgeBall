@@ -17,7 +17,6 @@ public abstract class StateMachine : MonoBehaviour
             Debug.LogWarning("State is null");
             return;
         }
-
         InitiateStateChange(targetState);
     }
 
@@ -31,6 +30,7 @@ public abstract class StateMachine : MonoBehaviour
 
     void InitiateStateChange(State targetState)
     {
+        
         if (CurrentState != targetState && !InTransition)
         {
             Transition(targetState);
@@ -41,6 +41,8 @@ public abstract class StateMachine : MonoBehaviour
     {
         InTransition = true;
         CurrentState?.Exit();
+        _previousState = CurrentState;
+        Debug.Log(_previousState);
         CurrentState = newState;
         CurrentState?.Enter();
         InTransition = false;

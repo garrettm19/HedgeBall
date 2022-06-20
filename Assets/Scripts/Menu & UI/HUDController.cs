@@ -13,6 +13,9 @@ public class HUDController : MonoBehaviour
     [SerializeField] private TMP_Text levelTimeText;
     [SerializeField] private TMP_Text winLoseStatusText;
 
+    [SerializeField] private GameObject pauseMenu;
+    public GameObject PauseMenu { get { return pauseMenu; } private set { pauseMenu = value; } }
+
     //[SerializeField] private GameObject maze;
 
     private IEnumerator countdown;
@@ -39,28 +42,40 @@ public class HUDController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         countdownText.gameObject.SetActive(false);
-
+        GameEnv.Instance.maze.GetComponent<MazeControl>().enabled = true; //Enable Controls
+        levelTimeText.gameObject.SetActive(true);
         StartCoroutine(levelTimer);   // Call to levelTimer coroutine
     }
 
     private IEnumerator LevelTimer()
     {
-        GameEnv.Instance.maze.GetComponent<MazeControl>().enabled = true; //Enable Controls
-        levelTimeText.gameObject.SetActive(true);
         
-        while (levelTime > 0)
-        {
-            levelTimeText.text = "00:00:"+levelTime.ToString();
-            yield return new WaitForSeconds(1f);
-            levelTime--;
-        }
-        levelTimeText.text = "00:00:00";
-        SetWinLoseBanner("YOU LOSE"); // Set the game over banner
+            while (levelTime > 0)
+            {
+            if (GameManager.manager.GetComponent<GameSM>().CurrentState is PlayState)
+                {
+                    levelTimeText.text = "00:00:" + levelTime.ToString();
+                    yield return new WaitForSeconds(1f);
+                    levelTime--;
+                }
+            else
+                {
+                yield return new WaitUntil(waitUnil);
+            }
+            }
+            levelTimeText.text = "00:00:00";
+            SetWinLoseBanner("YOU LOSE"); // Set the game over banner
+    }
+
+    bool waitUnil()
+    {
+        return GameManager.manager.GetComponent<GameSM>().CurrentState is PlayState;
     }
 
     public void SetWinLoseBanner(string status)
     {
         if(status == "YOU WIN")StopCoroutine(levelTimer);
+        GameManager.manager.GetComponent<GameSM>().ChangeState<PauseState>();
         GameEnv.Instance.maze.GetComponent<MazeControl>().enabled = false; //Disable Controls
         winLoseStatusText.text = status;
         winLoseStatusText.gameObject.SetActive(true);
