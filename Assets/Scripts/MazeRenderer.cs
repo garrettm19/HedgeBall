@@ -103,7 +103,7 @@ public class MazeRenderer : MonoBehaviour
                     if (j == rows - 1)
                     {
                         GameEnv.Instance.endPoint = Instantiate(ResourceLoader.endPoint, GameEnv.Instance.maze.transform);
-                        GameEnv.Instance.endPoint.transform.position = position + new Vector3(0f, -0.1f, 0f);
+                        GameEnv.Instance.endPoint.transform.position = position + new Vector3(0f, -0.2f, 0f);
                     }
                 }
 

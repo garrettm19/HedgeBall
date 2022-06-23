@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -681,6 +681,54 @@ PrefabInstance:
     - target: {fileID: 7119095714065851467, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308599733356180296, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308599733356180296, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308599733356180296, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308599733356180296, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308599733356180296, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308599733356180296, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184050778688349244, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184050778688349244, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184050778688349244, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184050778688349244, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184050778688349244, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184050778688349244, guid: a0fa5c6a0baeb8043b0e8b1b0ae15734, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
